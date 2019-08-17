@@ -8,4 +8,9 @@ background-image:url("https://lh3.googleusercontent.com/gu_ebUkTY9mNCnCbLxkorxI2
       background-position: center;
         background-repeat: no-repeat;
 	  background-size: cover;
-    }
+    
+  }
+  .main{}
+  body{
+	  background-color:blue;
+  }
