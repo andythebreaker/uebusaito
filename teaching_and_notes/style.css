@@ -10,7 +10,10 @@ background-image:url("https://lh3.googleusercontent.com/gu_ebUkTY9mNCnCbLxkorxI2
 	  background-size: cover;
     
   }
-  .main{}
+  .main{
+  filter: blur(8px);
+      -webkit-filter: blur(8px);
+  }
   body{
 	  background-color:blue;
   }
