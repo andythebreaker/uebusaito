@@ -1,3 +1,7 @@
 body {
 	  background-color: lightblue;
-  }
+background-image:url("http://www.flickr.com/photos/99241048@N04/48393380806");
+
+  filter: blur(8px);
+    -webkit-filter: blur(8px);
+    }
