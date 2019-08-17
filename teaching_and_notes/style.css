@@ -11,8 +11,8 @@ background-image:url("https://lh3.googleusercontent.com/gu_ebUkTY9mNCnCbLxkorxI2
     
   }
   .main{
-  filter: blur(8px);
-      -webkit-filter: blur(8px);
+  filter: blur(0px);
+      -webkit-filter: blur(0px);
   }
   body{
 	  background-color:blue;
