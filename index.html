@@ -69,8 +69,8 @@ let app = new PIXI.Application({width: 256, height: 256});
 document.body.appendChild(app.view);
   </script>
 	<script>
-		const app = new PIXI.Application();
-document.body.appendChild(app.view);
+		const app2 = new PIXI.Application();
+document.body.appendChild(app2.view);
 
 const geometry = new PIXI.Geometry()
     .addAttribute('aVertexPosition', [-100, -50, 100, -50, 0, 100]);
@@ -99,9 +99,9 @@ const triangle = new PIXI.Mesh(geometry, shader);
 
 triangle.position.set(400, 300);
 
-app.stage.addChild(triangle);
+app2.stage.addChild(triangle);
 
-app.ticker.add((delta) => {
+app2.ticker.add((delta) => {
 	    triangle.rotation += 0.01;
 });
 
