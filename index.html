@@ -12,7 +12,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
 		<script type="text/javascript" src="jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.1/pixi.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.1/pixi.min.js"></script>
 	</head>
 	<body>
 		<div class="ui three buttons">
@@ -55,43 +55,43 @@
 				Or
 			</div>
 		</div>
-	 <script type="text/javascript">
-		     let type = "WebGL"
-    if(!PIXI.utils.isWebGLSupported()){
-	          type = "canvas"
-	        }
+		<script type="text/javascript">
+			let type = "WebGL"
+if(!PIXI.utils.isWebGLSupported()){
+	type = "canvas"
+}
 
-    PIXI.utils.sayHello(type)
+PIXI.utils.sayHello(type)
 //Create a Pixi Application
 let app = new PIXI.Application({width: 256, height: 256});
 
 //Add the canvas that Pixi automatically created for you to the HTML document
 document.body.appendChild(app.view);
-  </script>
-	<script>
-		const app2 = new PIXI.Application();
+		</script>
+		<script>
+			const app2 = new PIXI.Application();
 document.body.appendChild(app2.view);
 
 const geometry = new PIXI.Geometry()
-    .addAttribute('aVertexPosition', [-100, -50, 100, -50, 0, 100]);
+	.addAttribute('aVertexPosition', [-100, -50, 100, -50, 0, 100]);
 
 const shader = PIXI.Shader.from(`
 
-	    precision mediump float;
-	    attribute vec2 aVertexPosition;
+	precision mediump float;
+	attribute vec2 aVertexPosition;
 
-	    uniform mat3 translationMatrix;
-    uniform mat3 projectionMatrix;
+	uniform mat3 translationMatrix;
+	uniform mat3 projectionMatrix;
 
-    void main() {
-	            gl_Position = vec4((projectionMatrix * translationMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
-	        }`,
+	void main() {
+		gl_Position = vec4((projectionMatrix * translationMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
+	}`,
 
 	`precision mediump float;
 
-    void main() {
-	            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-	        }
+void main() {
+	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+}
 
 `);
 
@@ -102,10 +102,34 @@ triangle.position.set(400, 300);
 app2.stage.addChild(triangle);
 
 app2.ticker.add((delta) => {
-	    triangle.rotation += 0.01;
+	triangle.rotation += 0.01;
 });
 
-	</script>
+		</script>
+		<table class="ui celled table">
+			<thead>
+				<tr><th>Name</th>
+					<th>Age</th>
+					<th>Job</th>
+				</tr></thead>
+				<tbody>
+					<tr>
+						<td data-label="Name">James</td>
+						<td data-label="Age">24</td>
+						<td data-label="Job">Engineer</td>
+					</tr>
+					<tr>
+						<td data-label="Name">Jill</td>
+						<td data-label="Age">26</td>
+						<td data-label="Job">Engineer</td>
+					</tr>
+					<tr>
+						<td data-label="Name">Elyse</td>
+						<td data-label="Age">24</td>
+						<td data-label="Job">Designer</td>
+					</tr>
+				</tbody>
+		</table>
 	</body>
 </html>
 
