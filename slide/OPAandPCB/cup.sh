@@ -11,7 +11,7 @@ cd ~/website/uebusaito
 date=$(date +%Y%m%d)
 preMSG="SHup"
 strVER=' Version = '
-mesg=${preMSG}${date}${strVER}`expr $(cat $file) + 0`
+mesg=${preMSG}${date}${strVER}${ver}
 git init
 git add -A
 git commit -m "${mesg}"
