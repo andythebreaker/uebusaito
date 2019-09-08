@@ -2,6 +2,7 @@
 echo "UP!"
 file='Version.txt'
 ( [ -e "$file" ] || touch "$file" ) && [ ! -w "$file" ] && echo cannot write to $file
+echo "1" >> ${file}
 cd ~/website/uebusaito
 date=$(date +%Y%m%d)
 preMSG="SHup"
