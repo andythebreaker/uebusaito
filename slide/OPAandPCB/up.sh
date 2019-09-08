@@ -1,8 +1,7 @@
 #!/bin/bash
 echo "UP!"
-if [[ ! -e /Version.txt ]]; then
-	        touch /Version.txt
-	fi
+file='Version.txt'
+( [ -e "$file" ] || touch "$file" ) && [ ! -w "$file" ] && echo cannot write to $file
 cd ~/website/uebusaito
 date=$(date +%Y%m%d)
 preMSG="SHup"
