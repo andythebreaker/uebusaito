@@ -1,5 +1,8 @@
 #!/bin/bash
 echo "UP!"
+if [[ ! -e /Version.txt ]]; then
+	        touch /Version.txt
+	fi
 cd ~/website/uebusaito
 date=$(date +%Y%m%d)
 preMSG="SHup"
