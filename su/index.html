@@ -2,134 +2,159 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>ANDY THE BREAKER on github</title>
-		<script
-	src="https://code.jquery.com/jquery-3.4.1.min.js"
- integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
- crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-
-		<script type="text/javascript" src="jquery.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.1/pixi.min.js"></script>
+		<title>slide</title>
+		<script src="https://cdn.jsdelivr.net/npm/webslides@1.5.0/static/js/webslides.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/webslides@1.5.0/static/css/webslides.css"></link>
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/webslides@1.5.0/static/css/svg-icons.css">
+	<script src="https://cdn.jsdelivr.net/npm/webslides@1.5.0/static/js/svg-icons.js"></script>
+	<script src="https://kit.fontawesome.com/695bf96da1.js"></script>
 	</head>
 	<body>
-		<div class="ui three buttons">
-			<button class="ui active button">One</button>
-			<button class="ui button">Two</button>
-			<button class="ui button">Three</button>
-		</div>
-		<h1>My First Heading</h1>
-		<p>My first paragraph.</p>
-		<i class="large home icon"></i>
-		<div class="ui placeholder segment">
-			<div class="ui two column very relaxed stackable grid">
-				<div class="column">
-					<div class="ui form">
-						<div class="field">
-							<label>Username</label>
-							<div class="ui left icon input">
-								<input type="text" placeholder="Username">
-								<i class="user icon"></i>
-							</div>
-						</div>
-						<div class="field">
-							<label>Password</label>
-							<div class="ui left icon input">
-								<input type="password">
-								<i class="lock icon"></i>
-							</div>
-						</div>
-						<div class="ui blue submit button">Login</div>
-					</div>
+		<article id="webslides">
+			<!-- Slide 1 -->
+			<section>
+				<h1>網際網路程式設計</h1>
+				<h2>如何起步?</h2>
+			</section>
+			<!-- Slide 2 -->
+			<section class="bg-primary">
+				<div class="wrap">
+					<h1>使用 windows10 系統</h1>
+					<b>2019</b>
+					<h2>簡易的說明</h2>
 				</div>
-				<div class="middle aligned column">
-					<div class="ui big button">
-						<i class="signup icon"></i>
-						Sign Up
+			</section>
+			<!-- Slide 3 -->
+			<section class="bg-gradient-v aligncenter slide current" id="section-30" style="">
+          <div class="wrap">
+            <h2>安裝一些必備的東西</h2>
+		  <p></p>
+            <p><code>linux系統</code></p>
+		  <h3>以ubuntu系統為例</h3>
+          </div>
+          <!-- .end .wrap -->
+        </section>
+			<!-- Slide 4 -->
+			<section>
+				<div class="wrap">
+					<h1>步驟1</h1>
+					<ul class="flexblock steps">
+              <!-- li>a? Add blink = <ul class="flexblock steps blink">-->
+              <li>
+                <span>
+                  <svg class="fa-cog" viewBox="0 0 512 512">
+	<use xlink:href="#fa-cog"></use>
+ </svg>
+                </span>
+                <h2>第一</h2>
+                <p>設定</p>
+              </li>
+              <li>
+                <div class="process step-2"></div>
+                <span>
+                  <i class="fas fa-laptop-code"></i>
+                </span>
+                <h2>第二</h2>
+                <p>應用程式</p>
+              </li>
+              <li>
+                <div class="process step-3"></div>
+                <span>
+                  <svg class="fa-angle-double-right" viewBox="0 0 512 512">
+			  <use xlink:href="#fa-angle-double-right"></use>
+           </svg>
+                </span>
+                <h2>第三</h2>
+                <p>(右邊)程式和功能</p>
+              </li>
+						  <li>
+							  <div class="process step-4"></div>
+							  <span>
+                  <svg class="fa-angle-double-left" viewBox="0 0 512 512">
+			  <use xlink:href="#fa-angle-double-left"></use>
+           </svg>
+                </span>
+						<h2>第四</h2>
+                <p>(左邊)開啟或關閉windows功能</p>	    
+						</li>
+              <li>
+                <div class="process step-5"></div>
+                <span>
+                  <i class="far fa-hand-point-up"></i>
+                </span>
+                <h2>第五</h2>
+                <ul>
+                  <li>(拉到最底下)</li>
+                  <li>適用於linux的windows子系統</li>
+                  <li>[勾選起來按確定，可能需要網路、等待與重新啟動]</li>
+                  
+                </ul>
+		      
+              </li>
+            </ul>
 					</div>
-				</div>
-			</div>
-			<div class="ui vertical divider">
-				Or
-			</div>
-		</div>
-		<script type="text/javascript">
-			let type = "WebGL"
-if(!PIXI.utils.isWebGLSupported()){
-	type = "canvas"
-}
-
-PIXI.utils.sayHello(type)
-//Create a Pixi Application
-let app = new PIXI.Application({width: 256, height: 256});
-
-//Add the canvas that Pixi automatically created for you to the HTML document
-document.body.appendChild(app.view);
-		</script>
-		<script>
-			const app2 = new PIXI.Application();
-document.body.appendChild(app2.view);
-
-const geometry = new PIXI.Geometry()
-	.addAttribute('aVertexPosition', [-100, -50, 100, -50, 0, 100]);
-
-const shader = PIXI.Shader.from(`
-
-	precision mediump float;
-	attribute vec2 aVertexPosition;
-
-	uniform mat3 translationMatrix;
-	uniform mat3 projectionMatrix;
-
-	void main() {
-		gl_Position = vec4((projectionMatrix * translationMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);
-	}`,
-
-	`precision mediump float;
-
-void main() {
-	gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-}
-
-`);
-
-const triangle = new PIXI.Mesh(geometry, shader);
-
-triangle.position.set(400, 300);
-
-app2.stage.addChild(triangle);
-
-app2.ticker.add((delta) => {
-	triangle.rotation += 0.01;
-});
-
-		</script>
-		<table class="ui celled table">
-			<thead>
-				<tr><th>Chapter</th>
-					<th>What is it?</th>
-					<th>My words ~</th>
-				</tr></thead>
-				<tbody>
-					<tr>
-						<td data-label="Name">1~</td>
-						<td data-label="Age">24</td>
-						<td data-label="Job">Engineer</td>
-					</tr>
-					<tr>
-						<td data-label="Name">Jill</td>
-						<td data-label="Age">26</td>
-						<td data-label="Job">Engineer</td>
-					</tr>
-					<tr>
-						<td data-label="Name">Elyse</td>
-						<td data-label="Age">24</td>
-						<td data-label="Job">Designer</td>
-					</tr>
-				</tbody>
-		</table>
+				<!-- .end .wrap -->
+			</section>
+				<!-- Slide 5 -->
+			<section>
+				<div class="wrap">
+					<h1>步驟2</h1>
+				<ul class="flexblock activity">
+              <li>
+                <a href="#" title="第一">
+                  <div>
+                    <p class="year">
+                      1.<img class="graylogo" src="https://webslides.tv/static/images/logos/microsoft.svg" alt="Microsoft">
+                    </p>
+                    <p class="title">
+                      microsoft store
+                    </p>
+                    <p class="summary">
+                      商店可以在開始功能表中找到
+                    </p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" title="第二">
+                  <p class="year">
+                    2.<img src="https://assets.ubuntu.com/v1/1be42010-cof_orange_hex.jpg" style="max-width:50% !important;">
+                  </p>
+                  <p class="title">
+                    尋找ubuntu 18.04LTS
+                  </p>
+                  <p class="summary">
+                    版本上可能有差異，這是較優良的
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a href="#" title="第三">
+                  <div>
+			  <p class="year">
+				  3.<img src="https://loading.io/spinners/microsoft/lg.rotating-balls-spinner.gif" 
+					 style="max-height:60% !important;">
+			  </p>
+			  <p class="title">
+                    安裝
+                  </p>
+                  <p class="summary">
+                    安裝完成後可於開始功能表找到ubuntu程式，但後續需要經歷複雜的設定過程
+                  </p>
+                </a>
+              </li>
+            </ul>
+					</div>
+				<!-- .end .wrap -->
+			</section>
+			<!-- Slide 6 -->
+			<section>
+				<h1>GitHub Pages 設定教學</h1>
+				<a href="https://paper.dropbox.com/doc/GitHub-Pages-CupQBpXHwCIEwPMFpwJE7">https://paper.dropbox.com/doc/GitHub-Pages-CupQBpXHwCIEwPMFpwJE7</a>
+			</section>
+		</article>
 	</body>
 </html>
 
