@@ -157,9 +157,9 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Please provide a string to translate as the first argument.")
         exit()
-
     A = sys.argv[1]
     print(get_translate(A, "en","zh-TW"))#en->zh-TW
+
 
 
 
