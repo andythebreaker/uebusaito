@@ -4,6 +4,7 @@ from urllib.parse import quote
 from json import loads
 import tk as tk
 import pyuseragents
+import sys
 tk = tk.Token()
 class GoogleTranslator():
 
@@ -153,8 +154,12 @@ def get_translate(inputtext, sourcelanguage='auto',targetlanguage='zh-TW'):
             return get_translate(inputtext, sourcelanguage,targetlanguage)
 
 if __name__ == '__main__':
-    #print(get_translate("And say mean things", "en","zh-TW"))
-    print(get_translate("insert", "en","zh-TW"))
+    if len(sys.argv) < 2:
+        print("Please provide a string to translate as the first argument.")
+        exit()
+
+    A = sys.argv[1]
+    print(get_translate(A, "en","zh-TW"))#en->zh-TW
 
 
 
