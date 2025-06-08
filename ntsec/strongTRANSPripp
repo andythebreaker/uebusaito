@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+1. **************************************
+i dont think the perturbance and dropRadius part here is ddoing a lot
+$('body').ripples({
+        resolution: 1024,
+        dropRadius: 20,
+        perturbance: 0.6,//0.04
+      });      const ws = new WebSocket('ws://127.0.0.1:9980');
+
+perturbance needs to be set between 0.04~0.6
+*****************************************
+2. **************************************
+要調哪裡?
+(1) 解析度
+    $(document).ready(function () {
+      $('body').ripples({
+        resolution: 1024,
+(2)
+                const pixelY = (1 - y) * window.innerHeight;
+                $('body').ripples('drop', pixelX, pixelY, 20, 0.15)
+20 那個我認為可以保持
+(3) 原本的背景    (我現在是條透明 COMP TOP ATOP)
+html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(45deg, #0a2a4a, #1e4a6b, #0f3454, #2d5a7b);
+      background-size: 400% 400%;
+      animation: deepSeaWave 8s ease-in-out infinite;
+      position: relative;
+    }:root {
+  --bubble1-color: rgba(70, 130, 180, 0.3);
+  --bubble2-color: rgba(100, 149, 237, 0.2);
+  --bubble3-color: rgba(65, 105, 225, 0.15);
+  --stripe1-color: rgba(30, 74, 107, 0.1);
+  --stripe2a-color: rgba(15, 52, 84, 0.2);
+  --stripe2b-color: rgba(45, 90, 123, 0.1);
+}
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi-User Ripples</title>
+  <style>    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      background:  rgba(0,0,0,0);
+      background-size: 400% 400%;
+      animation: deepSeaWave 8s ease-in-out infinite;
+      position: relative;
+    }
+
+    :root {
+  --bubble1-color: rgba(70, 130, 180, 0);
+  --bubble2-color: rgba(100, 149, 237, 0);
+  --bubble3-color: rgba(65, 105, 225, 0);
+  --stripe1-color: rgba(30, 74, 107, 0);
+  --stripe2a-color: rgba(15, 52, 84, 0);
+  --stripe2b-color: rgba(45, 90, 123, 0);
+}
+
+html::before,
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, var(--bubble1-color) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, var(--bubble2-color) 2px, transparent 2px),
+    radial-gradient(circle at 40% 80%, var(--bubble3-color) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, transparent 0%, var(--stripe1-color) 50%, transparent 100%),
+    linear-gradient(45deg, transparent 0%, var(--stripe2a-color) 25%, transparent 50%, var(--stripe2b-color) 75%, transparent 100%);
+  background-size: 80px 80px, 120px 120px, 60px 60px, 200px 200px, 300px 300px;
+  background-position: 0 0, 40px 40px, 20px 60px, 0 0, 0 0;
+  pointer-events: none;
+  animation: deepSeaTexture 12s linear infinite;
+}
+
+
+    @keyframes deepSeaWave {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes deepSeaTexture {
+      0% { transform: translateX(0) translateY(0); }
+      25% { transform: translateX(-10px) translateY(-5px); }
+      50% { transform: translateX(-5px) translateY(-10px); }
+      75% { transform: translateX(-15px) translateY(-2px); }
+      100% { transform: translateX(0) translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- jQuery + ripples -->
+  <script src="./lib/jquery-3.6.0.min.js"></script>
+  <script src="./lib/jquery.ripples-min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('body').ripples({
+        resolution: 1024,
+        dropRadius: 20,
+        perturbance: 0.04,//0.04
+      });      const ws = new WebSocket('ws://127.0.0.1:9980');
+      let detectInterval;
+
+      ws.onopen = () => {
+        console.log('WS connected');
+        // 每100ms發送一次'detect'字串
+        detectInterval = setInterval(() => {
+          if (ws.readyState === WebSocket.OPEN) {
+            ws.send('detect');
+          }
+        }, 100);
+      };
+
+      ws.onclose = () => {
+        console.log('WS closed');
+        if (detectInterval) {
+          clearInterval(detectInterval);
+        }
+      };
+
+      ws.onerror = (err) => {
+        console.error('WS error', err);
+        if (detectInterval) {
+          clearInterval(detectInterval);
+        }
+      };      ws.onmessage = (ev) => {
+        try {
+          const data = JSON.parse(ev.data);
+            if (Array.isArray(data)) {
+            // 處理格式：[{"pos": [x, y], "movement": [dx, dy]}]
+            data.forEach(item => {
+              if (item.pos && Array.isArray(item.pos) && item.pos.length >= 2) {
+                const [x, y] = item.pos;
+                // 將相對座標(0-1)轉換為像素座標
+                const pixelX = x * window.innerWidth;
+                // 反轉 y 座標：ws中上方越大，但HTML中下方越大
+                const pixelY = (1 - y) * window.innerHeight;
+                $('body').ripples('drop', pixelX, pixelY, 20, 0.15)
+              }
+            });
+          }
+        } catch (e) {
+          console.warn('Non-JSON message:', ev.data);
+        }
+      };
+
+      // 隨機水波紋生成器
+      function createRandomRipple() {
+        // 隨機位置 (0 到視口寬度/高度)
+        const randomX = Math.random() * window.innerWidth;
+        const randomY = Math.random() * window.innerHeight;
+        
+        // 隨機半徑 (10-40像素)
+        const randomRadius = Math.random() * 30 + 10;
+        
+        // 隨機強度 (0.02-0.08)
+        const randomPerturbance = Math.random() * 0.06 + 0.02;
+        
+        // 創建水波紋
+        $('body').ripples('drop', randomX, randomY, randomRadius, randomPerturbance);
+        
+        // 設定下一次隨機時間 (500ms-3000ms)
+        const nextDelay = Math.random() * 2500 + 500;
+        setTimeout(createRandomRipple, nextDelay);
+      }
+
+      // 啟動隨機水波紋生成器
+      setTimeout(createRandomRipple, 1000); // 1秒後開始
+    });
+  </script>
+</body>
+</html>
